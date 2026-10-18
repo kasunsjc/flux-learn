@@ -13,7 +13,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: flux-system
+  name: 2-demo-kustomization-git-bb-app
   namespace: flux-system
 spec:
   interval: 10m0s
@@ -22,3 +22,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: 2-demo-source-git-bb-app
+  targetNamespace: 2-demo
