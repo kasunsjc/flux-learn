@@ -1,0 +1,24 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: 2-demo-source-git-bb-app
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: 2-demo
+  url: https://github.com/kasunsjc/bb-app-source
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./flux-clusters/dev-cluster/dev-01/2-demo
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: 2-demo-source-git-bb-app
