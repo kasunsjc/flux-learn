@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: Bucket
+metadata:
+  name: azure-bucket
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  provider: azure
+  bucketName: flux-artifacts
+  endpoint: https://fluxartifactsblob.blob.core.windows.net
