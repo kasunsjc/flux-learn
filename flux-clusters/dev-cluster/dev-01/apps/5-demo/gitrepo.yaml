@@ -27,7 +27,7 @@ spec:
       chart: ./helm-chart
       interval: 1m
       valuesFiles:
-        - ./templates/values.yaml
+        - ./helm-chart/templates/values.yaml
       sourceRef:
         kind: GitRepository
         name: 5-demo-source-git-bb-app
