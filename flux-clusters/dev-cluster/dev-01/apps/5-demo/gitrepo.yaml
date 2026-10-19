@@ -26,6 +26,7 @@ spec:
     spec:
       chart: ./helm-chart
       interval: 1m
+      reconcileStrategy: Revision
       valuesFiles:
         - ./helm-chart/values.yaml
       sourceRef:
