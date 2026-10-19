@@ -1,0 +1,34 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: 5-demo-source-git-bb-app
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: 5-demo
+  url: https://github.com/kasunsjc/bb-app-source
+
+---
+
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: 5-demo-source-helm-bb-app
+  namespace: flux-system
+spec:
+  interval: 1m
+  releaseName: 5-demo-helm-bb-app
+  targetNamespace: 5-demo
+  install:
+    createNamespace: true
+  chart:
+    spec:
+      chart: ./helm-chart
+      interval: 1m
+      valuesFiles:
+        - ./templates/values.yaml
+      sourceRef:
+        kind: GitRepository
+        name: 5-demo-source-git-bb-app
+        namespace: flux-system
