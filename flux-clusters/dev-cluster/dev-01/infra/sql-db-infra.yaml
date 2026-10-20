@@ -1,0 +1,25 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: sql-db-infra-source-git
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: infrastructure
+  url: https://github.com/kasunsjc/bb-app-source
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: sql-db-infra-kustomization-git
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./database
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: sql-db-infra-source-git
+  targetNamespace: sql-db-infra
