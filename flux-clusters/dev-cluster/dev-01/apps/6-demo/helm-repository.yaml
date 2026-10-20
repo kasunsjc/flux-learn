@@ -22,7 +22,6 @@ spec:
     createNamespace: true
   chart:
     spec:
-      chart: ./helm-chart
       interval: 1m
       reconcileStrategy: Revision
       sourceRef:
