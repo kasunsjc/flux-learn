@@ -22,8 +22,8 @@ spec:
     createNamespace: true
   chart:
     spec:
+      chart: block-buster-helm-app
       interval: 1m
-      reconcileStrategy: Revision
       sourceRef:
         kind: HelmRepository
         name: 6-demo-source-helm-bb-app
