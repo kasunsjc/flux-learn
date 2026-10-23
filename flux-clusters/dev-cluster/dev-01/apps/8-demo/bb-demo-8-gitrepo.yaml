@@ -9,7 +9,7 @@ spec:
     branch: 8-demo
   url: https://github.com/kasunsjc/bb-app-source
   secretRef:
-    name: bb-app-git-auth
+    name: flux-system
 
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
