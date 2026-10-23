@@ -21,3 +21,29 @@ spec:
   policy:
     semver:
       range: 7.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageUpdateAutomation
+metadata:
+  name: 8-demo-update
+  namespace: flux-system
+spec:
+  interval: 30m
+  sourceRef:
+    kind: GitRepository
+    name: 8-demo-source-git-bb-app
+  git:
+    checkout:
+      ref:
+        branch: 8-demo
+    commit:
+      author:
+        email: fluxcdbot@users.noreply.github.com
+        name: fluxcdbot
+    push:
+      branch: 8-demo
+  update:
+    path: ./manifests
+    strategy:
+      type: Setters
