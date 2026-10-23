@@ -45,5 +45,4 @@ spec:
       branch: 8-demo
   update:
     path: ./manifests
-    strategy:
-      type: Setters
+    strategy: Setters
